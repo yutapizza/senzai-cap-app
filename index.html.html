@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eaf7fb">
+<title>洗剤・キャップ換算</title>
+<style>
+:root{--blue:#dff3fb;--blue-dark:#1976a8;--green:#16a085;--green-light:#e5f8f2;--text:#183344;--muted:#607887;--white:#fff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;padding:20px 14px 32px;background:linear-gradient(180deg,#eaf7fb 0%,#f7fbfc 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
+.app{max-width:480px;margin:0 auto}
+header{text-align:center;padding:8px 0 20px}
+header .icon{font-size:36px}
+h1{font-size:25px;margin:5px 0;letter-spacing:.02em}
+header p{margin:8px 0 0;font-size:14px;color:var(--muted)}
+.product{background:var(--white);border-radius:20px;padding:18px 16px;margin-bottom:16px;box-shadow:0 5px 18px rgba(35,91,112,.07);border:1px solid #e6f0f4}
+.product-header{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.product-icon{width:46px;height:46px;border-radius:14px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:25px;flex-shrink:0}
+.softener .product-icon,.bleach .product-icon{background:var(--green-light)}
+h2{font-size:19px;margin:0}
+.sub{color:var(--muted);font-size:12px;margin-top:4px}
+.label{font-size:13px;font-weight:700;margin-bottom:9px}
+.buttons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:17px}
+.cup-btn{min-width:0;min-height:52px;border:2px solid #dcebf1;border-radius:12px;background:#f7fbfd;color:var(--text);font-size:17px;font-weight:750;cursor:pointer;touch-action:manipulation}
+.cup-btn:active{transform:scale(.96)}
+.cup-btn.active{background:var(--blue-dark);color:white;border-color:var(--blue-dark);box-shadow:0 3px 9px rgba(25,118,168,.22)}
+.softener .cup-btn.active,.bleach .cup-btn.active{background:var(--green);border-color:var(--green);box-shadow:0 3px 9px rgba(22,160,133,.2)}
+.result{text-align:center;background:#f0f9fd;border-radius:16px;padding:15px 8px 14px}
+.softener .result,.bleach .result{background:#effaf6}
+.result-label{color:var(--muted);font-size:12px;font-weight:700}
+.ml{font-size:clamp(38px,10vw,48px);font-weight:850;letter-spacing:-.03em;line-height:1.3;color:var(--blue-dark);margin:3px 0 5px;font-variant-numeric:tabular-nums}
+.softener .ml,.bleach .ml{color:#10876f}
+.unit{font-size:24px}
+.cap{font-size:15px;font-weight:700;color:#385b6b}
+.cap strong{font-size:20px;color:var(--text)}
+.formula{font-size:12px;color:var(--muted);margin-top:9px}
+.note{text-align:center;font-size:12px;color:var(--muted);line-height:1.7;padding:4px 8px 0}
+@media(max-width:360px){body{padding:12px 9px 24px}.product{padding:14px 11px}.buttons{gap:5px}.cup-btn{font-size:15px;min-height:48px}h2{font-size:17px}}
+</style>
+</head>
+<body>
+<main class="app">
+<header><div class="icon">🫧</div><h1>洗剤・キャップ換算</h1><p>洗濯機の表示杯数をタップするだけ</p></header>
+<section class="product" data-product="detergent">
+<div class="product-header"><div class="product-icon">🧴</div><div><h2>アタックZERO</h2><div class="sub">洗剤 ・ 1杯あたり 10ml</div></div></div>
+<div class="label">洗濯機の表示杯数</div><div class="buttons" aria-label="アタックZEROの表示杯数"></div>
+<div class="result" aria-live="polite"><div class="result-label">必要な洗剤の量</div><div class="ml">10 <span class="unit">ml</span></div><div class="cap">（ペットボトルキャップ約 <strong>1.3</strong> 杯分）</div><div class="formula">1キャップ ＝ 7.5ml</div></div>
+</section>
+<section class="product softener" data-product="softener">
+<div class="product-header"><div class="product-icon">🌿</div><div><h2>レノアハピネス</h2><div class="sub">柔軟剤 ・ 1杯あたり 6.7ml</div></div></div>
+<div class="label">洗濯機の表示杯数</div><div class="buttons" aria-label="レノアハピネスの表示杯数"></div>
+<div class="result" aria-live="polite"><div class="result-label">必要な柔軟剤の量</div><div class="ml">6.7 <span class="unit">ml</span></div><div class="cap">（ペットボトルキャップ約 <strong>0.9</strong> 杯分）</div><div class="formula">1キャップ ＝ 7.5ml</div></div>
+</section>
+<section class="product bleach" data-product="bleach">
+<div class="product-header"><div class="product-icon">✨</div><div><h2>ワイドハイターEXパワー</h2><div class="sub">漂白剤 ・ 1杯あたり 20ml</div></div></div>
+<div class="label">洗濯機の表示杯数</div><div class="buttons" aria-label="ワイドハイターEXパワーの表示杯数"></div>
+<div class="result" aria-live="polite"><div class="result-label">必要な漂白剤の量</div><div class="ml">20 <span class="unit">ml</span></div><div class="cap">（ペットボトルキャップ約 <strong>2.7</strong> 杯分）</div><div class="formula">1キャップ ＝ 7.5ml</div></div>
+</section>
+<footer class="note">※ 計算は指定された換算係数に基づいています。<br>※ 実際の使用量は洗濯機の表示・各製品の使用量表示も確認してください。</footer>
+</main>
+<script>
+(() => {
+"use strict";
+const products={detergent:{mlPerCup:10},softener:{mlPerCup:6.7},bleach:{mlPerCup:20}};
+const cupValues=Array.from({length:10},(_,i)=>(i+1)/10);
+document.querySelectorAll(".product").forEach(section=>{
+const product=products[section.dataset.product];
+const buttons=section.querySelector(".buttons");
+const mlElement=section.querySelector(".ml");
+const capElement=section.querySelector(".cap strong");
+function update(cups,selectedButton){
+const ml=Math.round(cups*product.mlPerCup*10)/10;
+const caps=ml/7.5;
+mlElement.innerHTML=`${Number(ml.toFixed(1))} <span class="unit">ml</span>`;
+capElement.textContent=caps.toFixed(1);
+buttons.querySelectorAll("button").forEach(button=>{
+const active=button===selectedButton;
+button.classList.toggle("active",active);
+button.setAttribute("aria-pressed",String(active));
+});
+}
+cupValues.forEach(cups=>{
+const button=document.createElement("button");
+button.type="button";button.className="cup-btn";button.textContent=cups.toFixed(1);
+button.setAttribute("aria-label",`表示杯数 ${cups.toFixed(1)} 杯`);
+button.setAttribute("aria-pressed","false");
+button.addEventListener("click",()=>update(cups,button));
+buttons.appendChild(button);
+});
+update(0.1,buttons.querySelector("button"));
+});
+})();
+</script>
+</body>
+</html>
