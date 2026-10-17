@@ -62,7 +62,7 @@ h2{font-size:19px;margin:0}
 <script>
 (() => {
 "use strict";
-const products={detergent:{mlPerCup:10},softener:{mlPerCup:6.7},bleach:{mlPerCup:20}};
+const products={detergent:{mlPerCup:10},softener:{mlPerCup:16},bleach:{mlPerCup:20}};
 const cupValues=Array.from({length:10},(_,i)=>(i+1)/10);
 document.querySelectorAll(".product").forEach(section=>{
 const product=products[section.dataset.product];
